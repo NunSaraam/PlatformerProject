@@ -12,6 +12,19 @@ public class HeroKnight : MonoBehaviour {
 
     [SerializeField] private GameObject hitboxObject;
 
+    [SerializeField] private float speedBoostAmount = 5.0f;
+    [SerializeField] private float speedBoostDuration = 1000.0f;
+
+    private IEnumerator SpeedBoostCoroutine()
+    {
+        float originalSpeed = m_speed;
+        m_speed += speedBoostAmount;
+
+        yield return new WaitForSeconds(speedBoostDuration);
+
+        m_speed = originalSpeed;
+    }
+
     void EnableHitbox()  // 애니메이션 이벤트로 호출
     {
         hitboxObject.SetActive(true);
@@ -323,6 +336,12 @@ public class HeroKnight : MonoBehaviour {
             if (m_isInvincible) return;
 
             TriggerGameOver();
+        }
+
+        if (collision.CompareTag("SpeedUpItem"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine(SpeedBoostCoroutine());
         }
 
         if (collision.CompareTag("Enemy"))

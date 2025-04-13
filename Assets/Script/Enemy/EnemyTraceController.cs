@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTraceController : MonoBehaviour
+public class EnemyTracePatrolController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float raycastDistance = 2f;
-    public float traceDistance = 2f;
+    public float patrolSpeed = 2f;
+    public float chaseSpeed = 4f;
+    public float traceDistance = 4f;
+    public float raycastDistance = 1f;
+    public Transform groundCheck; // 발밑 체크 포인트 (없으면 제거 가능)
 
     private Transform player;
+    private bool isChasing = false;
+    private bool isMovingRight = true;
 
     private void Start()
     {
@@ -17,27 +21,67 @@ public class EnemyTraceController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 direction = player.position - transform.position;
+        if (player == null) return;
 
-        if (direction.magnitude > traceDistance)
-            return;
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        isChasing = distanceToPlayer <= traceDistance;
 
-        Vector2 directionNormalized = direction.normalized;
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, directionNormalized, raycastDistance);
-        Debug.DrawRay(transform.position, directionNormalized * raycastDistance, Color.red);
-
-        foreach (RaycastHit2D rHit in hits )
+        if (isChasing)
         {
-            if (rHit.collider != null && rHit.collider.CompareTag("Obstacle"))
-            {
-                Vector3 alternativeDiretion = Quaternion.Euler(0f, 0f, -90f) * direction;
-                transform.Translate(alternativeDiretion * moveSpeed * Time.deltaTime);
-            }
-            else
-            {
-                transform.Translate(direction * moveSpeed * Time.deltaTime);
-            }
+            ChasePlayer();
         }
+        else
+        {
+            Patrol();
+        }
+    }
+
+    private void Patrol()
+    {
+        float moveDirection = isMovingRight ? 1f : -1f;
+        Vector2 move = new Vector2(moveDirection * patrolSpeed * Time.deltaTime, 0f);
+        transform.Translate(move);
+
+        Vector2 rayOrigin = transform.position;
+        Vector2 rayDir = isMovingRight ? Vector2.right : Vector2.left;
+
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDir, raycastDistance);
+        Debug.DrawRay(rayOrigin, rayDir * raycastDistance, Color.yellow);
+
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
+        {
+            Flip();
+        }
+    }
+
+    private void ChasePlayer()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        // 장애물 감지
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance);
+        Debug.DrawRay(transform.position, direction * raycastDistance, Color.red);
+
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
+        {
+            // 장애물 있으면 방향 전환
+            Flip();
+            return;
+        }
+
+        // 플레이어 쪽으로 이동
+        transform.Translate(direction * chaseSpeed * Time.deltaTime);
+
+        // 시선도 플레이어 쪽으로
+        if (direction.x > 0 && !isMovingRight) Flip();
+        else if (direction.x < 0 && isMovingRight) Flip();
+    }
+
+    private void Flip()
+    {
+        isMovingRight = !isMovingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1; // 좌우 반전
+        transform.localScale = localScale;
     }
 }
