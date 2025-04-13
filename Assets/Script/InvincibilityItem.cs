@@ -12,7 +12,7 @@ public class InvincibilityItem : MonoBehaviour
             if (player != null)
             {
                 player.SetInvincible(true);     // 무적 켜기
-                player.invincibleTimer = 5f;    // 무적 지속 시간 설정
+                player.invincibleTimer = 1000f;    // 무적 지속 시간 설정
                 Destroy(gameObject);            // 아이템 제거
             }
         }

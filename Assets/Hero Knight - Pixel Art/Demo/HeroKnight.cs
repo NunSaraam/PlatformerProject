@@ -3,6 +3,25 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class HeroKnight : MonoBehaviour {
+    
+    //플레이어 공격 데미지 추가
+    [SerializeField] private Transform attackPoint;             // 공격 위치
+    [SerializeField] private float attackRange = 0.5f;          // 공격 범위
+    [SerializeField] private LayerMask enemyLayers;             // 공격 대상이 될 레이어
+    [SerializeField] private int attackDamage = 1;              // 데미지 양
+
+    [SerializeField] private GameObject hitboxObject;
+
+    void EnableHitbox()  // 애니메이션 이벤트로 호출
+    {
+        hitboxObject.SetActive(true);
+    }
+
+    void DisableHitbox()  // 애니메이션 이벤트로 호출
+    {
+        hitboxObject.SetActive(false);
+    }
+    private float hitboxOffsetX;
 
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
@@ -62,7 +81,12 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
 
+        if (hitboxObject == null)
+            hitboxObject = transform.Find("Hitbox")?.gameObject;
+
         m_dropwaitTime = m_dropwaitTimeValue;
+
+        hitboxOffsetX = hitboxObject.transform.localPosition.x;
     }
 
     // Update is called once per frame
@@ -130,12 +154,19 @@ public class HeroKnight : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+
+            Vector3 hitboxPos = hitboxObject.transform.localPosition;
+            hitboxPos.x = Mathf.Abs(hitboxPos.x);
+            hitboxObject.transform.localPosition = hitboxPos;
         }
-            
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+
+            Vector3 hitboxPos = hitboxObject.transform.localPosition;
+            hitboxPos.x = -Mathf.Abs(hitboxPos.x);
+            hitboxObject.transform.localPosition = hitboxPos;
         }
 
         // Move
@@ -294,6 +325,13 @@ public class HeroKnight : MonoBehaviour {
             TriggerGameOver();
         }
 
+        if (collision.CompareTag("Enemy"))
+        {
+            if (m_isInvincible) return;
+
+            TriggerGameOver();
+        }
+
         if (collision.CompareTag("Finish"))
         {
             collision.GetComponent<LevelObject>().MoveNextLevel();
@@ -316,5 +354,19 @@ public class HeroKnight : MonoBehaviour {
     public void Respawn()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //데미지 함수
+    public void DealDamage()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(attackDamage);
+            }
+        }
     }
 }
