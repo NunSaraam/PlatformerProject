@@ -15,6 +15,27 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] private float speedBoostAmount = 5.0f;
     [SerializeField] private float speedBoostDuration = 1000.0f;
 
+    private float origianlJumpForce;
+    private Coroutine jumpBoostCoroutine;
+
+    public void ApplyJumpBoost(float boostAmount, float duration)
+    {
+        if (jumpBoostCoroutine != null)
+            StopCoroutine(jumpBoostCoroutine);
+
+        jumpBoostCoroutine = StartCoroutine(JumpBoostRoutine(boostAmount, duration));
+    }
+
+    private IEnumerator JumpBoostRoutine(float boostAmount, float duration)
+    {
+        origianlJumpForce = m_jumpForce;
+        m_jumpForce += boostAmount;
+
+        yield return new WaitForSeconds(duration);
+
+        m_jumpForce = origianlJumpForce;
+    }
+
     private IEnumerator SpeedBoostCoroutine()
     {
         float originalSpeed = m_speed;

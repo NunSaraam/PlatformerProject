@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Obstacle
   - SpeedUpItem
+  - JumpBoostItem
   layers:
   - Default
   - TransparentFX
