@@ -57,9 +57,9 @@ public class HeroKnight : MonoBehaviour {
     }
     private float hitboxOffsetX;
 
-    [SerializeField] float      m_speed = 4.0f;
-    [SerializeField] float      m_jumpForce = 7.5f;
-    [SerializeField] float      m_rollForce = 6.0f;
+    [SerializeField] float      m_speed = 10.0f;
+    [SerializeField] float      m_jumpForce = 12.0f;
+    [SerializeField] float      m_rollForce = 10.0f;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
