@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpBoostItem : MonoBehaviour
 {
-    public float jumpBoostAmount = 10f;
+    public float jumpBoostAmount = 7f;
     public float boostDuration = 1000f;
 
     private void OnTriggerEnter2D(Collider2D collision)
