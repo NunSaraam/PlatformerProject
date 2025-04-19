@@ -16,5 +16,13 @@ public class Hitbox : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
         }
+        if (collision.CompareTag("Boss"))
+        {
+            Boss boss = collision.GetComponent<Boss>();
+            if (boss != null)
+            {
+                boss.GetComponent<Boss>().TakeDamage(1);
+            }
+        }
     }
 }

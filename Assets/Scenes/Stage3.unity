@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying eye (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.6
@@ -445,6 +449,10 @@ PrefabInstance:
     - target: {fileID: 1642462101356063017, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_Name
       value: Flying eye (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -601,10 +609,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2954181336601895002, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
-      propertyPath: m_SortingOrder
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_Name
       value: HeroKnight
@@ -673,6 +677,10 @@ PrefabInstance:
     - target: {fileID: 1642462101356063017, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_Name
       value: Flying eye (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3682,6 +3690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying eye (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.62
@@ -4294,9 +4306,23 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 756893800}
+    m_ColliderPaths:
+    - - X: 1080000000
+        Y: -160000000
+      - X: -520000000
+        Y: -160000000
+      - X: -520000000
+        Y: -170000000
+      - X: 1080000000
+        Y: -170000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 107.99998, y: -17}
+      - {x: 107.99998, y: -16}
+      - {x: -52, y: -16.000029}
+      - {x: -51.999973, y: -17}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -4359,7 +4385,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -6091,6 +6117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying eye (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.2
@@ -6638,6 +6668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying eye (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1
@@ -7051,6 +7085,147 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416451591}
   m_CullTransparentMesh: 1
+--- !u!1 &1421704114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421704116}
+  - component: {fileID: 1421704115}
+  - component: {fileID: 1421704117}
+  m_Layer: 0
+  m_Name: dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1421704115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421704114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f578255be63ad944a9f33a2fd370c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1421704116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421704114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.336334, y: 4.872076, z: -0.3595371}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1421704117
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421704114}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e5238ff596353d44390c418c597263a4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1492119152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7621,6 +7796,10 @@ PrefabInstance:
     - target: {fileID: 1642462101356063017, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_Name
       value: Flying eye (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17218,6 +17397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying eye (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.26
@@ -17274,6 +17457,10 @@ PrefabInstance:
     - target: {fileID: 1642462101356063017, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_Name
       value: Flying eye (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844485336386371344, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17514,8 +17701,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Trap, Assembly-CSharp
+      - m_Target: {fileID: 1421704115}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: Maingo
         m_Mode: 1
         m_Arguments:
@@ -17632,10 +17819,6 @@ PrefabInstance:
     - target: {fileID: 1642462101356063017, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_Name
       value: Flying eye
-      objectReference: {fileID: 0}
-    - target: {fileID: 7670750263772416230, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
-      propertyPath: chaseSpeed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224217815564668220, guid: 550a4d9862319c9408ea294c8c0f81e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17866,3 +18049,4 @@ SceneRoots:
   - {fileID: 980994137}
   - {fileID: 682868818}
   - {fileID: 1226120912}
+  - {fileID: 1421704116}

@@ -10,6 +10,8 @@ TagManager:
   - Obstacle
   - SpeedUpItem
   - JumpBoostItem
+  - PlayerAttack
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - SensorLayer
   - ItemLayer
   - enemyLayers
-  - 
-  - 
+  - PlayerAttack
+  - Trap
   - 
   - 
   - 

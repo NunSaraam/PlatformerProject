@@ -64,8 +64,11 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] GameObject m_slideDust;
 
     [SerializeField] private PlatformEffector2D m_platformeEffector;
-    [SerializeField] private float m_dropwaitTimeValue = 2f;
+    [SerializeField] private float m_dropwaitTimeValue = 0.3f;
     private float m_dropwaitTime;
+
+    public AudioClip attackSounds;
+    private AudioSource audioSource;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -107,6 +110,7 @@ public class HeroKnight : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -242,6 +246,10 @@ public class HeroKnight : MonoBehaviour {
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
 
+            if (attackSounds !=  null && audioSource != null)
+            {
+                audioSource.PlayOneShot(attackSounds);
+            }
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
