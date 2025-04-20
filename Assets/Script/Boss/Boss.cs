@@ -7,6 +7,8 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] private GameObject hitbox;
 
+    public float attackCoolTime = 1.5f;
+
     public Transform player;
     public float moveSpeed = 3f;
     public float attackRange = 1f;
@@ -78,8 +80,14 @@ public class Boss : MonoBehaviour
 
     public void EndAttack()
     {
+        StartCoroutine(AttackCoolTimeRoutine());
+
+    }
+    private IEnumerator AttackCoolTimeRoutine()
+    {
+        animator.SetBool("IsRunning", false);
+        yield return new WaitForSeconds(attackCoolTime);
         isAttacking = false;
-        animator.SetBool("IsRunning",false);
     }
     public void EnableHitbox()
     {
@@ -89,6 +97,8 @@ public class Boss : MonoBehaviour
     {
         hitbox.SetActive(false);
     }
+
+
 
     void TeleportNearPlayer()
     {
@@ -123,6 +133,7 @@ public class Boss : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+
         if (!isInvincible)
         {
             currenHealth -= damage;
