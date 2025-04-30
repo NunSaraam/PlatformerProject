@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class HeroKnight : MonoBehaviour {
-    
+    float score;
+
     //플레이어 공격 데미지 추가
     [SerializeField] private Transform attackPoint;             // 공격 위치
     [SerializeField] private float attackRange = 0.5f;          // 공격 범위
@@ -110,6 +111,7 @@ public class HeroKnight : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        score = 1000f;
         audioSource = GetComponent<AudioSource>();
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
@@ -130,6 +132,7 @@ public class HeroKnight : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        score -= Time.deltaTime;
         if (isGameOver)
             return;
         // Increase timer that controls attack combo
@@ -382,6 +385,7 @@ public class HeroKnight : MonoBehaviour {
 
         if (collision.CompareTag("Finish"))
         {
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
             collision.GetComponent<LevelObject>().MoveNextLevel();
         }
     }
