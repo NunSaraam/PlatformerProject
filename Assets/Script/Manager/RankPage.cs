@@ -24,6 +24,8 @@ public class RankPage : MonoBehaviour
     public void ChangeRank(int index)
     {
         changeRank = index;
+
+        RefreshRankList();
     }
 
     void RefreshRankList()
@@ -33,7 +35,7 @@ public class RankPage : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        var sortedData = allData.results.Where(r => r.stage == 1).OrderByDescending(x => x.score).ToList();
+        var sortedData = allData.results.Where(r => r.stage == changeRank).OrderByDescending(x => x.score).ToList();
 
 
         for (int i = 0; i < sortedData.Count; i++)
