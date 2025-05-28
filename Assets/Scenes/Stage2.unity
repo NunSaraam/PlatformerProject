@@ -4259,6 +4259,7 @@ GameObject:
   - component: {fileID: 1206054723}
   - component: {fileID: 1206054722}
   - component: {fileID: 1206054725}
+  - component: {fileID: 1206054726}
   m_Layer: 0
   m_Name: InvincibilityItem
   m_TagString: Untagged
@@ -4380,6 +4381,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973da54814b49054a84d56f18469d212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1206054726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206054721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855d09f44d2a63d498b6bca0949aec9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 4fdb070cd9b765747a2ec1f68a5729f7, type: 2}
 --- !u!1 &1211965860
 GameObject:
   m_ObjectHideFlags: 0

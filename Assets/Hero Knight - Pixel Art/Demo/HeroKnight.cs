@@ -391,6 +391,12 @@ public class HeroKnight : MonoBehaviour {
 
             collision.GetComponent<LevelObject>().MoveNextLevel();
         }
+
+        if (collision.CompareTag("Item"))
+        {
+            score =+ collision.GetComponent<ItemObject>().GetPoint();
+            Destroy(collision.gameObject);
+        }
     }
     public void TriggerGameOver()
     {
